@@ -6,12 +6,12 @@ import {
   useEthersProvider,
   useEthersSigner,
 } from "../lib/wagmiEthersAdapter.js";
-import { getEvmSignerForSigner } from "@wormhole-foundation/sdk-evm";
+// import { getEvmSignerForSigner } from "@wormhole-foundation/sdk-evm";
 import {
   wormhole,
   amount,
-  TransactionId,
-  signSendWait,
+  // TransactionId,
+  // signSendWait,
   Wormhole,
 } from "@wormhole-foundation/sdk";
 import evm from "@wormhole-foundation/sdk/evm";
@@ -21,7 +21,7 @@ import { useSwitchChain } from "wagmi";
 const Bridge = () => {
   const signer = useEthersSigner();
   const provider = useEthersProvider();
-  const { chains, switchChain } = useSwitchChain();
+  const { switchChain } = useSwitchChain();
 
   const bridge = async () => {
     if (!provider || !signer) return;
@@ -30,7 +30,7 @@ const Bridge = () => {
     const src = wh.getChain("Sepolia");
 
     const dst = wh.getChain("Fantom");
-    const srcSigner = await getEvmSignerForSigner(signer);
+    // const srcSigner = await getEvmSignerForSigner(signer);
 
     const srcNtt = await src.getProtocol("Ntt", {
       ntt: {

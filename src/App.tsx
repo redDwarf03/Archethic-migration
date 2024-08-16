@@ -1,14 +1,14 @@
 import "./App.css";
 import "@rainbow-me/rainbowkit/styles.css";
-import {
-  ConnectButton,
-  getDefaultConfig,
-  RainbowKitProvider,
-} from "@rainbow-me/rainbowkit";
-import { WagmiProvider } from "wagmi";
-import { fantomTestnet, sepolia } from "wagmi/chains";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import Bridge from "../component/bridge.tsx";
+// import {
+//   ConnectButton,
+//   getDefaultConfig,
+//   RainbowKitProvider,
+// } from "@rainbow-me/rainbowkit";
+// import { WagmiProvider } from "wagmi";
+// import { fantomTestnet, sepolia } from "wagmi/chains";
+// import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+// import Bridge from "../component/bridge.tsx";
 // const config = getDefaultConfig({
 //   appName: "My RainbowKit App",
 //   projectId: "YOUR_PROJECT_ID",
@@ -16,7 +16,7 @@ import Bridge from "../component/bridge.tsx";
 //   // ssr: true, // If your dApp uses server side rendering (SSR)
 // });
 
-const queryClient = new QueryClient();
+// const queryClient = new QueryClient();
 import WormholeConnect, {
   WormholeConnectConfig,
 } from "@wormhole-foundation/wormhole-connect";
