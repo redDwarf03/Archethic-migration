@@ -4,10 +4,10 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import gsap from "gsap";
 import { useLayoutEffect } from "react";
-import Wrapper from "./wrapper.tsx";
-import Overview from "./overview/overview.tsx";
 import { useAccount } from "wagmi";
-import { ConnectButtonCustom } from "./connect-button.tsx";
+
+import Overview from "./overview/overview.tsx";
+import Disconnected from "./disconnected.tsx";
 
 export default function Migration() {
   const { address } = useAccount();
@@ -17,17 +17,5 @@ export default function Migration() {
     AOS.init();
   }, []);
 
-  return (
-    <main>
-      {address ? (
-        <Wrapper>
-          <Overview />
-        </Wrapper>
-      ) : (
-        <Wrapper middle>
-          <ConnectButtonCustom />
-        </Wrapper>
-      )}
-    </main>
-  );
+  return <main>{address ? <Overview /> : <Disconnected />}</main>;
 }

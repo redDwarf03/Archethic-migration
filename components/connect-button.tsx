@@ -1,4 +1,5 @@
 import { ConnectButton } from "@rainbow-me/rainbowkit";
+import { ArrowRight } from "lucide-react";
 import { Button } from "./button.tsx";
 
 export const ConnectButtonCustom = () => {
@@ -31,6 +32,7 @@ export const ConnectButtonCustom = () => {
           <div
             {...(!ready && {
               "aria-hidden": true,
+
               style: {
                 opacity: 0,
                 pointerEvents: "none",
@@ -41,8 +43,13 @@ export const ConnectButtonCustom = () => {
             {(() => {
               if (!connected) {
                 return (
-                  <Button onClick={openConnectModal} type="button">
+                  <Button
+                    onClick={openConnectModal}
+                    type="button"
+                    className="mx-auto px-[30px] py-[15px] text-22 h-[54px] gap-[10px]"
+                  >
                     Connect Wallet
+                    <ArrowRight size="22" />
                   </Button>
                 );
               }

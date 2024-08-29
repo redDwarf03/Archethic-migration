@@ -18,8 +18,14 @@ const config: Config = {
         "3xl": "1920px",
       },
       colors: {
+        purple: {
+          DEFAULT: "#6A3EEC",
+          med: "#1A1244",
+          dark: "#110B2D",
+        },
         muted: {
           DEFAULT: "#FFFFFFCC",
+          dark: "#5B5966",
         },
         background: {
           DEFAULT: "#110B2D",
@@ -30,14 +36,24 @@ const config: Config = {
           dark: "#2C2067",
         },
       },
-
+      fontFamily: {
+        pp: ["pp", "sans-serif"],
+      },
+      fontWeight: {
+        regular: "400",
+        medium: "500",
+        semibold: "600",
+      },
       fontSize: {
+        8: "8px",
+        12: "12px",
         13: "13px",
         14: "14px",
         15: "15px",
         16: "16px",
         18: "18px",
         20: "20px",
+        22: "22px",
         24: "24px",
         26: "26px",
         28: "28px",
@@ -45,6 +61,7 @@ const config: Config = {
         32: "32px",
         35: "35px",
       },
+
       backgroundImage: {
         desktop: "url('/images/backgrounds/main-desktop.png')",
         phone: "url('/images/backgrounds/main-phone.png')",
