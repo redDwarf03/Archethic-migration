@@ -1,10 +1,10 @@
+import { ArrowRight } from "lucide-react";
 import arrowBottom from "../../src/images/networks/arrow-bottom.svg";
 import arrowRight from "../../src/images/networks/arrow-right.svg";
 import bsc from "../../src/images/networks/bsc.png";
 import eth from "../../src/images/networks/eth.png";
 import matic from "../../src/images/networks/matic.png";
 import uco from "../../src/images/networks/uco.svg";
-import { ArrowRight } from "lucide-react";
 import { Button } from "../button";
 import { Input } from "../input";
 import NetworkCard from "./network-card";
@@ -21,9 +21,10 @@ export default function MigrationNetworks({
   migrate,
 }: MigrationNetworksProps) {
   return (
-    <div className="bg-background border border-border-light p-[18px] xl:p-[24px] 2xl:p-[32px] rounded-[10px]">
-      <div className="flex flex-col md:flex-row gap-[24px] md:gap-[18px] xl:gap-[24px] 2xl:gap-[32px] items-center">
+    <div className="bg-purple-light border border-border-light p-[28px] xl:p-[24px] 2xl:p-[32px] rounded-[10px]">
+      <div className="flex flex-col md:flex-row gap-[32px] items-center">
         <NetworkCard
+          isMigrationStyle
           onClick={() => {}}
           networkIcon={
             network === "eth" ? eth : network === "bsc" ? bsc : matic
@@ -37,28 +38,41 @@ export default function MigrationNetworks({
           <div className="flex flex-col lg:flex-row lg:gap-[18px] xl:gap-[30px]">
             <div className="w-full flex flex-col gap-[8px]">
               <label className="text-16 font-medium">Send</label>
-              <Input
-                type="number"
-                placeholder="0.00"
-                icon={<img src={uco} alt="uco" />}
-              />
-              <p className="text-14 font-medium text-muted">Max 30 000</p>
+              <div className="relative">
+                <Input
+                  iconY
+                  className="pb-[33px]"
+                  type="number"
+                  placeholder="0.00"
+                  icon={<img src={uco} alt="uco" />}
+                />
+                <div className="absolute bottom-[8px] right-[14px] w-full flex items-center justify-end gap-[10px] cursor-pointer">
+                  <p className="text-10 font-medium text-muted text-right">
+                    Balance 30 000
+                  </p>
+                  <button className="px-[6px] py-[2px] max-h-[18px] bg-purple-gradient w-fit rounded-[10px] border border-border text-10">
+                    Max
+                  </button>
+                </div>
+              </div>
             </div>
             <div className="h-[70px] w-[106px] lg:w-[98px] lg:h-[117px] flex items-center justify-center mx-auto">
               <img
                 src={arrowBottom}
                 alt="arrow-bottom"
-                className="w-[40px] h-[86px] lg:hidden"
+                className="w-[45px] h-[45px] lg:hidden"
               />
               <img
                 src={arrowRight}
                 alt="arrow-bottom"
-                className="min-w-[68.8px] h-[86px] hidden lg:block"
+                className="min-w-[45px] h-[45px] hidden lg:block"
               />
             </div>
             <div className="w-full flex flex-col gap-[8px]">
               <label className="text-16 font-medium">Receive</label>
               <Input
+                className="lg:pb-[33px]"
+                iconY
                 type="number"
                 placeholder="0.00"
                 icon={<img src={uco} alt="uco" />}
@@ -69,8 +83,6 @@ export default function MigrationNetworks({
             Migrate <ArrowRight size="18" />
           </Button>
         </div>
-        <div className=""></div>
-        <div className=""></div>
       </div>
     </div>
   );

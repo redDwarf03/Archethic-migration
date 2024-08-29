@@ -15,7 +15,7 @@ export default function Overview() {
   const [congratulations, setCongratulations] = useState(false);
 
   return (
-    <div className="flex flex-col gap-[32px]">
+    <div className="flex flex-col gap-[32px] xl:gap-[62px]">
       <div className="flex flex-col gap-[32px] lg:gap-[42px] xl:gap-[52px] md:items-center md:flex-row">
         <div className="flex gap-[15px] max-w-[250px] lg:max-w-[209px] xl:max-w-[273px] 2xl:max-w-[315px]">
           <div className="w-px bg-border  min-h-full"></div>

@@ -57,8 +57,10 @@ export default function BalanceCard({
       >
         <div
           className={cn(
-            "absolute top-0 left-0 right-0 bottom-0 bg-balance-card blur-[25px] w-full",
-            version === "Version 1" ? "bg-left" : "bg-center"
+            "absolute top-0 left-0 right-0 bottom-0  blur-[25px] w-full",
+            version === "Version 1"
+              ? "bg-[rgba(22,0,85,0.70)]"
+              : "bg-balance-card bg-center"
           )}
         ></div>
         <div className="relative z-10">
@@ -178,7 +180,14 @@ function NetworkItem({
             )}
           />
         )}
-        <div className="flex items-center gap-[5px] lg:gap-[10px]">
+        <div
+          className={cn(
+            "flex items-center gap-[5px] lg:gap-[10px]",
+            !isSelected
+              ? "!border-t-border-light border border-transparent pt-[5px]"
+              : ""
+          )}
+        >
           <img
             src={network.logo}
             alt={network.id}

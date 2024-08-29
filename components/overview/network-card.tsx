@@ -1,7 +1,8 @@
-import uco from "../../src/images/networks/uco.svg";
 import "aos/dist/aos.css";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import uco from "../../src/images/networks/uco.svg";
 // import Image, { StaticImageData } from "next/image";
+import { cn } from "../../lib/utils";
 import Badge from "../badge";
 import { Button } from "../button";
 
@@ -13,6 +14,9 @@ type NetworkCardProps = {
   delay?: number;
   backBtn?: () => void;
   onClick?: () => void;
+  isMigrationStyle?: boolean;
+  className?: string;
+  balanceLeft?: boolean;
 };
 
 export default function NetworkCard({
@@ -23,10 +27,19 @@ export default function NetworkCard({
   backBtn,
   onClick,
   delay,
+  isMigrationStyle,
+  className,
+  balanceLeft,
 }: NetworkCardProps) {
   return (
-    <div className="p-[10px] group flex flex-col items-center gap-[18px] xl:gap-[24px] 2xl:gap-[32px] md:w-1/3">
-      <Badge className="group-hover:rotate-3 group-hover:scale-110 transition-all duration-300">
+    <div
+      className={cn(
+        "p-[28px] group flex flex-col items-center gap-[18px] xl:gap-[24px] 2xl:gap-[32px] lg:w-1/3 bg-purple-light border border-border-light rounded-[10px]",
+        isMigrationStyle && "bg-transparent border-none p-0",
+        className
+      )}
+    >
+      <Badge className="group-hover:rotate-3 group-hover:scale-110 transition-all duration-300 border-border-light bg-transparent">
         <img src={networkIcon} alt="network" className="w-[20px] h-[20px]" />
         <p className="text-13 xl:text-15 font-medium">{network}</p>
       </Badge>
@@ -40,7 +53,9 @@ export default function NetworkCard({
         >
           {balance}
         </p>
-        <p className="text-muted text-16 xl:text-18 font-medium">UCO</p>
+        <p className="text-muted text-16 xl:text-18 font-medium">
+          {balanceLeft ? "Balance Left" : "UCO"}
+        </p>
       </div>
 
       {migrationCompleted && !backBtn ? (

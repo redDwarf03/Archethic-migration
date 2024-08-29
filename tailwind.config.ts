@@ -22,6 +22,7 @@ const config: Config = {
           DEFAULT: "#6A3EEC",
           med: "#1A1244",
           dark: "#110B2D",
+          light: "#4B38A74D",
         },
         muted: {
           DEFAULT: "#FFFFFFCC",
@@ -46,6 +47,7 @@ const config: Config = {
       },
       fontSize: {
         8: "8px",
+        10: "10px",
         12: "12px",
         13: "13px",
         14: "14px",
