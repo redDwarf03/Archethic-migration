@@ -1,25 +1,9 @@
-import { migrationConfig } from "../../config/networks.ts";
-import NetworkCard from "./network-card";
+import { ReactNode } from "react";
 
-export default function BalanceDisplay({
-  onClick,
-}: {
-  onClick: (chain: Network) => void;
-}) {
+export default function BalanceDisplay({ children }: { children: ReactNode }) {
   return (
     <div className="">
-      <div className="flex flex-col gap-[32px] lg:flex-row">
-        {migrationConfig.map((network, index) => (
-          <NetworkCard
-            onClick={() => onClick(network.name)}
-            networkIcon={network.icon}
-            network={network.label}
-            balance="30 000"
-            migrationCompleted={false}
-            delay={200 + index * 100}
-          />
-        ))}
-      </div>
+      <div className="flex flex-col gap-[32px] lg:flex-row">{children}</div>
     </div>
   );
 }

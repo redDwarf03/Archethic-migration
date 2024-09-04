@@ -17,14 +17,18 @@ type NetworkCardProps = {
   isMigrationStyle?: boolean;
   className?: string;
   balanceLeft?: boolean;
+  disabled?: boolean;
+  buttonArrow?: "left" | "right";
+  buttonLabel: string;
 };
 
 export default function NetworkCard({
   networkIcon,
   network,
   balance,
-  migrationCompleted,
-  backBtn,
+  disabled,
+  buttonArrow,
+  buttonLabel,
   onClick,
   delay,
   isMigrationStyle,
@@ -36,7 +40,7 @@ export default function NetworkCard({
       className={cn(
         "p-[28px] group flex flex-col items-center gap-[18px] xl:gap-[24px] 2xl:gap-[32px] lg:w-1/3 bg-purple-light border border-border-light rounded-[10px]",
         isMigrationStyle && "bg-transparent border-none p-0",
-        className
+        className,
       )}
     >
       <Badge className="group-hover:rotate-3 group-hover:scale-110 transition-all duration-300 border-border-light bg-transparent">
@@ -58,19 +62,10 @@ export default function NetworkCard({
         </p>
       </div>
 
-      {migrationCompleted && !backBtn ? (
-        <Button disabled={migrationCompleted} className="w-fit">
-          migration completed
-        </Button>
-      ) : !backBtn ? (
-        <Button className="w-fit" onClick={onClick}>
-          Migrated <ArrowRight size="18" />
-        </Button>
-      ) : (
-        <Button variant="secondary" className="w-fit" onClick={backBtn}>
-          <ArrowLeft size="18" /> Back
-        </Button>
-      )}
+      <Button className="w-fit" onClick={onClick} disabled={disabled}>
+        {buttonArrow === "left" && <ArrowLeft size="18" />} {buttonLabel}{" "}
+        {buttonArrow === "right" && <ArrowRight size="18" />}
+      </Button>
     </div>
   );
 }
