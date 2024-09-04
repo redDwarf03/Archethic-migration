@@ -2,19 +2,15 @@
 
 import gsap from "gsap";
 import { useEffect, useRef, useState } from "react";
-import { cn } from "../../lib/utils";
+import { cn, formatNumber } from "../../lib/utils";
 import logoBalance from "../../src/images/logo-balance.png";
 import copyIcon from "../../src/images/networks/copy.svg";
 
 import { ChevronDown } from "lucide-react";
 import Badge from "../badge";
-import { formatEther } from "viem";
+import { formatUnits } from "viem";
 import { migrationConfig } from "../../config/networks.ts";
 import { MigrationNetwork } from "../../src/types";
-
-const formatNumber = (num: number): string => {
-  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-};
 
 type BalanceCardProps = {
   balance: bigint;
@@ -33,7 +29,10 @@ export default function BalanceCard({
 }: BalanceCardProps) {
   const counterRef = useRef<HTMLDivElement>(null);
   const countRef = useRef<{ value: number }>({ value: 0 });
-  const formatedBalance = formatEther(balance);
+  const formatedBalance = formatUnits(
+    balance,
+    version === "Version 1" ? 18 : 8,
+  );
 
   useEffect(() => {
     const counter = counterRef.current;
@@ -44,7 +43,7 @@ export default function BalanceCard({
         ease: "power3.inOut",
         onUpdate: () => {
           counter.textContent = formatNumber(
-            Math.round(countRef.current.value),
+            Math.round(+countRef.current.value),
           );
         },
       });
@@ -79,7 +78,7 @@ export default function BalanceCard({
                 className="w-[20.308px] h-[18px] lg:w-[44px] lg:h-[39px]"
               />
               <p ref={counterRef} className="text-16 lg:text-35 font-medium">
-                {formatEther(balance)}
+                {formatedBalance}
               </p>
             </div>
           </div>

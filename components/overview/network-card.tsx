@@ -2,7 +2,7 @@ import "aos/dist/aos.css";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import uco from "../../src/images/networks/uco.svg";
 // import Image, { StaticImageData } from "next/image";
-import { cn } from "../../lib/utils";
+import { cn, formatNumber } from "../../lib/utils";
 import Badge from "../badge";
 import { Button } from "../button";
 
@@ -55,7 +55,7 @@ export default function NetworkCard({
           data-aos="fade-up"
           data-aos-delay={delay}
         >
-          {balance}
+          {formatNumber(Math.round(+balance))}
         </p>
         <p className="text-muted text-16 xl:text-18 font-medium">
           {balanceLeft ? "Balance Left" : "UCO"}

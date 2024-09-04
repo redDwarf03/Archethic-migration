@@ -14,10 +14,11 @@ import {
   useWaitForTransactionReceipt,
   useWriteContract,
 } from "wagmi";
-import { formatEther, parseUnits } from "viem";
+import { formatEther, formatUnits, parseUnits } from "viem";
 import { waitForTransactionReceipt } from "viem/actions";
 import { config } from "../../config/wagmi/config.ts";
 import Congratulations from "./congratulations.tsx";
+import { formatNumber } from "../../lib/utils.ts";
 
 export type MigrationNetworksProps = {
   network: MigrationNetworkWithBalance;
@@ -132,7 +133,7 @@ export default function MigrationNetworks({
                 />
                 <div className="absolute bottom-[8px] right-[14px] w-full flex items-center justify-end gap-[10px] cursor-pointer">
                   <p className="text-10 font-medium text-muted text-right">
-                    Max {formatEther(network.balanceV1)}
+                    Max {formatNumber(+formatEther(network.balanceV1))}
                   </p>
                   <button
                     className="px-[6px] py-[2px] max-h-[18px] bg-purple-gradient w-fit rounded-[10px] border border-border text-10"
@@ -162,7 +163,10 @@ export default function MigrationNetworks({
                 iconY
                 placeholder="0.00"
                 icon={<img src={uco} alt="uco" />}
-                value={sendInput}
+                value={formatUnits(parseUnits(sendInput, 8), 8)}
+                // value={Math.floor(+sendInput * 10 ** 8) / 10 ** 8}
+                // value={(+sendInput).toFixed(8)}
+                // value={Math.trunc(+sendInput).toFixed(8)} c
                 readOnly
               />
             </div>

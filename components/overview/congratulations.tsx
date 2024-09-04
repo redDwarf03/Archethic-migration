@@ -3,7 +3,8 @@ import txhashIcon from "../../src/images/networks/txhash-link.svg";
 import uco from "../../src/images/networks/uco.svg";
 import { Button } from "../button";
 import NewtworkCard from "./network-card";
-import { formatEther } from "viem";
+import { formatEther, formatUnits, parseUnits } from "viem";
+import { formatNumber } from "../../lib/utils.ts";
 
 export type CongratulationsProps = {
   amount: string;
@@ -28,7 +29,9 @@ export default function Congratulations({
         </p>
         <div className="flex flex-col gap-[18px]">
           <div className="px-[18px] py-[10px] bg-purple-dark flex items-center gap-[10px] border border-border-light rounded-[10px] w-fit mx-auto">
-            <p className="text-32 font-medium">{amount}</p>
+            <p className="text-32 font-medium">
+              {formatNumber(formatUnits(parseUnits(amount, 8), 8))}
+            </p>
             <img src={uco} alt="uco" className="w-[29px] h-[24.701px]" />
           </div>
           <div className="flex items-center gap-[10px] justify-center">
