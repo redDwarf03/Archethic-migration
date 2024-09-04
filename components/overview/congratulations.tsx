@@ -30,7 +30,7 @@ export default function Congratulations({
         <div className="flex flex-col gap-[18px]">
           <div className="px-[18px] py-[10px] bg-purple-dark flex items-center gap-[10px] border border-border-light rounded-[10px] w-fit mx-auto">
             <p className="text-32 font-medium">
-              {formatNumber(formatUnits(parseUnits(amount, 8), 8))}
+              {formatNumber(+formatUnits(parseUnits(amount, 8), 8))}
             </p>
             <img src={uco} alt="uco" className="w-[29px] h-[24.701px]" />
           </div>
